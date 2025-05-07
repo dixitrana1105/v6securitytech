@@ -8,7 +8,7 @@
             <thead>
                 <tr>
                     <th class="font-bold py-2 px-6">S.No</th>
-                    <th class="font-bold py-2 px-8">Visitor ID</th>
+                    <th class="font-bold py-2 px-8">Visitor IDDDDDDDDD</th>
                     <th class="font-bold py-2 px-8">Card ID</th>
                     <th class="font-bold py-2 px-8">Card Status</th>
                     <th class="font-bold py-2 px-8">Date</th>
@@ -210,7 +210,7 @@
                         class="block-visitor-btn btn-danger text-white font-bold py-1 px-4 rounded shadow-md transition duration-300"
                         data-visitor-id="{{ $item->visitor_id }}">
                         Block
-                        </button>                        
+                        </button>
                         @else
                         Block
                         @if ($item->visitor_block == 1)
@@ -220,7 +220,7 @@
                             <button
                             class="btn-primary text-white font-bold py-1 px-4 rounded shadow-md transition duration-300">
                             UnBlock
-                            </button>   
+                            </button>
                         </form>
                         @else
                         UnBlock
