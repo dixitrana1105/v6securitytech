@@ -21,7 +21,7 @@
             <div></div>
             <div>
                 <label for="registerDate"><strong>Register Date</strong></label>
-                <input id="registerDate" name="date" type="date" style="width: 100%" class="form-input" required/>
+                <input id="registerDate" name="date" type="date" style="width: 100%" class="form-input" required readonly/>
             </div>
         </div>
         <br>

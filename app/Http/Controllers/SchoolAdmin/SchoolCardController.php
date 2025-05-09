@@ -19,11 +19,18 @@ class SchoolCardController extends Controller
         $this->blockTenantService = $blockTenantService;
     }
 
-    public function index_cards()
+   public function index_cards(Request $request)
     {
+        $status = $request->input('assign_status');
         $bulding_id = Auth::guard('buildingadmin')->user()->id;
 
-        $cards = Card::where('building_id', $bulding_id)->with('building')->latest()->paginate(10);
+        $query = Card::where('building_id', $bulding_id)->with('building')->latest();
+
+        if ($status !== null) {
+            $query->where('assign_status', $status);
+        }
+
+        $cards = $query->paginate(10);
 
         return view('school-admin.cards.index', compact('cards'));
     }

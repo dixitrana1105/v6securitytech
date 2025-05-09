@@ -11,9 +11,17 @@ use App\Models\Building_Master;
 
 class CardController extends Controller
 {
-    public function index_card()
+   public function index_card(Request $request)
     {
-        $cards = Card::with('building')->latest()->paginate(10);
+        $status = $request->input('assign_status');
+        $query = Card::with('building')->latest();
+
+        if ($status !== null) {
+            $query->where('assign_status', $status);
+        }
+
+        $cards = $query->paginate(10);
+
         return view('super-admin.card.index', compact('cards'));
     }
 

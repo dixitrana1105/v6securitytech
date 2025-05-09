@@ -1,11 +1,11 @@
 <x-layout.default>
 <div class="relative flex min-h-screen items-center justify-center bg-[url(/assets/images/auth/map.png)] bg-cover bg-center bg-no-repeat px-6 py-10 dark:bg-[#060818] sm:px-16">
-    
+
 <div class="panel shadow-lg rounded-lg p-8 max-w-6xl mx-auto" style="border-color: #a8acaf; border-width: medium;">
     <div class="flex justify-center mb-4">
         <h1 class="text-2xl font-bold">School</h1>
     </div>
-    
+
     <style>
         .alert-danger {
             color: red;
@@ -21,10 +21,10 @@
         <div></div>
         <div>
             <label for="registerDate"><strong>Register Date</strong></label>
-            <input id="registerDate" type="date" name="date" style="width: 100%" class="form-input" required/>
+            <input id="registerDate" type="date" name="date" style="width: 100%" class="form-input" required readonly/>
         </div>
     </div>
-    <br>    
+    <br>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
                 <label for="schoolId"><strong>School ID</strong></label>
@@ -35,7 +35,7 @@
                 <label for="schoolname"><strong>School Name</strong></label>
                 <input id="schoolname" name="schoolname" type="text" placeholder="Enter School Name" class="form-input" required/>
             </div>
-        </div>  
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
                 <label for="name"><strong>Contact Person</strong></label>
@@ -51,7 +51,7 @@
                 <label for="email"><strong>Email ID</strong></label>
                 <div class="flex">
                 <div class="bg-[#eee] flex justify-center items-center ltr:rounded-l-md rtl:rounded-r-md px-3 font-semibold border ltr:border-r-0 rtl:border-l-0 border-[#e0e6ed] dark:border-[#17263c] dark:bg-[#1b2e4b]">@</div>
-                <input id="email" type="email" name="email" placeholder="Enter Email" class="form-input ltr:rounded-l-none rtl:rounded-r-none"  required/>            
+                <input id="email" type="email" name="email" placeholder="Enter Email" class="form-input ltr:rounded-l-none rtl:rounded-r-none"  required/>
                 </div>
             </div>
             <div>
@@ -82,12 +82,12 @@
                     <label for="secretkey"><strong>Secret Key</strong></label>
                     <input id="secretkey" name="secretkey" type="text" placeholder="secret Key" class="form-input" required />
                 </div>
-            </div>  
+            </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div>
                 <label for="country"><strong>Country</strong></label>
                 <select id="countryDropdown" name="country"  class="form-input" required onchange="filterLocations()">
-                    <option value="" disabled selected>Select Country</option> 
+                    <option value="" disabled selected>Select Country</option>
                     @isset($country)
                     @foreach ($country as $countryList)
                         <option value="{{ $countryList->id }}"
@@ -97,26 +97,26 @@
                     @endisset
                 </select>
             </div>
-            <div>            
+            <div>
                 <label for="state"><strong>State</strong></label>
                 <select id="stateDropdown" name="state"  class="form-input" required onchange="filterLocations()">
-                    <option value="" disabled selected>Select State</option>                                                                                                      
+                    <option value="" disabled selected>Select State</option>
                 </select>
             </div>
-            <div>            
+            <div>
                 <label for="city"><strong>City</strong></label>
                 <select id="cityDropdown" name="city"  class="form-input" required>
-                    <option value="" disabled selected>Select City</option>                                                                                                    
+                    <option value="" disabled selected>Select City</option>
                 </select>
             </div>
-        </div>        
+        </div>
         <div>
             <button type="submit" class="btn btn-primary !mt-6">Submit</button>
         </div>
-    </form>          
+    </form>
 </div>
 </div>
-<script>    
+<script>
     document.getElementById('registerDate').value = new Date().toISOString().substring(0, 10);
 </script>
 <script>

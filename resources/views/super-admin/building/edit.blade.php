@@ -5,7 +5,7 @@
         <div class="flex justify-center mb-4">
             <h1 class="text-2xl font-bold">Edit Building</h1>
         </div>
-    
+
     <style>
         .alert-danger {
             color: red;
@@ -22,7 +22,7 @@
             <div></div>
             <div>
                 <label for="registerDate"><strong>Register Date</strong></label>
-                <input  type="date" name="date" value="{{ $value->date ?? '' }}" style="width: 100%" class="form-input" required/>
+                <input  type="date" name="date" value="{{ $value->date ?? '' }}" style="width: 100%" class="form-input" required readonly/>
             </div>
         </div>
         <br>
@@ -75,7 +75,7 @@
                     <input id="security" name="security" type="number" placeholder="no security person" value="{{ $value->no_security_person ?? ''}}" class="form-input" required/>
                 </div>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                     <label for="address_1"><strong>Address 1</strong></label>
@@ -86,11 +86,11 @@
                     <input id="address_2" name="address_2" type="text" placeholder="address 2" value="{{ $value->address_2 ?? ''}}" class="form-input"  />
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">     
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div>
                     <label for="business_name"><strong>Business Name</strong></label>
                     <input id="business_name" type="text" name="business_name" placeholder="business name" value="{{ $value->business_name ?? ''}}" class="form-input"  />
-                </div>               
+                </div>
                 <div>
                     <label for="password"><strong>Password</strong></label>
                     <input id="password" type="password" name="password" placeholder="password" class="form-input"  />
@@ -132,20 +132,20 @@
             </div>
         </form>
     </div>
-    </div>    
+    </div>
     <script>
         function filterLocations() {
             var countryId = document.getElementById('countryDropdown').value;
             var stateDropdown = document.getElementById('stateDropdown');
             var cityDropdown = document.getElementById('cityDropdown');
-    
+
             // Get the currently selected state (if any)
             var selectedStateId = stateDropdown.value;
-    
+
             // Clear existing options
             stateDropdown.innerHTML = '<option value="">Select State</option>';
             cityDropdown.innerHTML = '<option value="">Select City</option>';
-    
+
             // Show states corresponding to the selected country
             var states = {!! json_encode($states) !!};
             states.forEach(function(state) {
@@ -159,7 +159,7 @@
                     stateDropdown.appendChild(option);
                 }
             });
-    
+
             // Show cities corresponding to the selected state
             var cities = {!! json_encode($cities) !!};
             cities.forEach(function(city) {

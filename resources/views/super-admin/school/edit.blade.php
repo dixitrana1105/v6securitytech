@@ -1,11 +1,11 @@
 <x-layout.default>
     <div class="relative flex min-h-screen items-center justify-center bg-[url(/assets/images/auth/map.png)] bg-cover bg-center bg-no-repeat px-6 py-10 dark:bg-[#060818] sm:px-16">
-        
+
     <div class="panel shadow-lg rounded-lg p-8 max-w-6xl mx-auto" style="border-color: #a8acaf; border-width: medium;">
         <div class="flex justify-center mb-4">
             <h1 class="text-2xl font-bold">Edit School</h1>
         </div>
-       
+
     <style>
         .alert-danger {
             color: red;
@@ -22,10 +22,10 @@
             <div></div>
             <div>
                 <label for="registerDate"><strong>Register Date</strong></label>
-                <input id="registerDate" type="date" value="{{ $value->date ?? '' }}" name="date" style="width: 100%" class="form-input" required/>
+                <input id="registerDate" type="date" value="{{ $value->date ?? '' }}" name="date" style="width: 100%" class="form-input" required readonly/>
             </div>
         </div>
-        <br>    
+        <br>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                     <label for="schoolId"><strong>School ID</strong></label>
@@ -36,7 +36,7 @@
                     <label for="schoolname"><strong>School Name</strong></label>
                     <input id="schoolname" name="schoolname" type="text" value="{{ $value->name ?? '' }}" placeholder="Enter School Name" class="form-input" required/>
                 </div>
-            </div>  
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                     <label for="name"><strong>Contact Person</strong></label>
@@ -52,7 +52,7 @@
                     <label for="email"><strong>Email ID</strong></label>
                     <div class="flex">
                     <div class="bg-[#eee] flex justify-center items-center ltr:rounded-l-md rtl:rounded-r-md px-3 font-semibold border ltr:border-r-0 rtl:border-l-0 border-[#e0e6ed] dark:border-[#17263c] dark:bg-[#1b2e4b]">@</div>
-                    <input id="email" type="email" name="email" value="{{ $value->email ?? '' }}" placeholder="Enter Email" class="form-input ltr:rounded-l-none rtl:rounded-r-none"  required/>            
+                    <input id="email" type="email" name="email" value="{{ $value->email ?? '' }}" placeholder="Enter Email" class="form-input ltr:rounded-l-none rtl:rounded-r-none"  required/>
                     </div>
                 </div>
                 <div>
@@ -69,7 +69,7 @@
                     <label for="address_2"><strong>Address 2</strong></label>
                     <input id="address_2" name="address_2" type="text" value="{{ $value->address_2 ?? '' }}" placeholder="address 2" class="form-input" />
                 </div>
-            </div>  
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div>
                     <label for="business_name"><strong>Business Name</strong></label>
@@ -88,7 +88,7 @@
                 <div>
                     <label for="country"><strong>Country</strong></label>
                     <select id="countryDropdown" name="country"  class="form-input" required onchange="filterLocations()">
-                        <option value="" disabled selected>Select Country</option> 
+                        <option value="" disabled selected>Select Country</option>
                         @isset($country)
                         @foreach ($country as $countryList)
                             <option value="{{ $countryList->id }}"
@@ -98,26 +98,26 @@
                     @endisset
                     </select>
                 </div>
-                <div>            
+                <div>
                     <label for="state"><strong>State</strong></label>
                     <select id="stateDropdown" name="state"  class="form-input" required onchange="filterLocations()">
                         <option value="{{ $value->state }}">{{ $value->State->name }}</option>
                     </select>
                 </div>
-                <div>            
+                <div>
                     <label for="city"><strong>City</strong></label>
                     <select id="cityDropdown" name="city"  class="form-input" required>
                         <option value="{{ $value->city }}">{{ $value->City->name }}</option>
                     </select>
                 </div>
-            </div>        
+            </div>
             <div>
                 <button type="submit" class="btn btn-primary !mt-6">Submit</button>
             </div>
-        </form>          
+        </form>
     </div>
     </div>
-    <script>    
+    <script>
         document.getElementById('registerDate').value = new Date().toISOString().substring(0, 10);
     </script>
     <script>
@@ -125,14 +125,14 @@
             var countryId = document.getElementById('countryDropdown').value;
             var stateDropdown = document.getElementById('stateDropdown');
             var cityDropdown = document.getElementById('cityDropdown');
-    
+
             // Get the currently selected state (if any)
             var selectedStateId = stateDropdown.value;
-    
+
             // Clear existing options
             stateDropdown.innerHTML = '<option value="">Select State</option>';
             cityDropdown.innerHTML = '<option value="">Select City</option>';
-    
+
             // Show states corresponding to the selected country
             var states = {!! json_encode($states) !!};
             states.forEach(function(state) {
@@ -146,7 +146,7 @@
                     stateDropdown.appendChild(option);
                 }
             });
-    
+
             // Show cities corresponding to the selected state
             var cities = {!! json_encode($cities) !!};
             cities.forEach(function(city) {
@@ -160,5 +160,4 @@
         }
     </script>
     </x-layout.default>
-    
-    
+

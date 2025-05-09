@@ -20,15 +20,24 @@ class CardSecuritySchool extends Controller
         $this->blockTenantService = $blockTenantService;
     }
 
-    public function index_cards()
+   public function index_cards(Request $request)
     {
+        $status = $request->input('assign_status');
         $building_id = Auth::guard('schoolsecurity')->user()->added_by;
 
-        $cards = Card::where('building_id', $building_id)->with('building')->latest()->paginate(10);
+        $query = Card::where('building_id', $building_id)->with('building')->latest();
+
+
+        if ($status !== null) {
+            $query->where('assign_status', $status);
+        }
+
+        $cards = $query->paginate(10);
 
         return view('school-security.cards.index', compact('cards'));
     }
 
+    
     public function card_history()
     {
         $building_id = Auth::guard('schoolsecurity')->user()->added_by;

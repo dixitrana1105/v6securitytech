@@ -19,8 +19,8 @@
                 <label for="assign_status" class="whitespace-nowrap"><strong>Assign Status:</strong></label>
                 <select id="assign_status" name="assign_status" class="form-input w-32">
                     <option value="">All</option>
-                    <option value="1" {{ request('assign_status') == '1' ? 'selected' : '' }}>Assigned</option>
-                    <option value="0" {{ request('assign_status') == '0' ? 'selected' : '' }}>Unassigned</option>
+                   <option value="assigned" {{ request('assign_status') == 'assigned' ? 'selected' : '' }}>Assigned</option>
+                    <option value="unassigned" {{ request('assign_status') == 'unassigned' ? 'selected' : '' }}>Unassigned</option>
                 </select>
             </div>
             <div class="form-group-item">
