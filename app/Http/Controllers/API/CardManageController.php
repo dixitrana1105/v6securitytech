@@ -18,6 +18,7 @@ class CardManageController extends Controller
         $buildingId = $request->input('building_id');
 
         $cards = Card::where('building_id', $buildingId)
+        ->where('assign_status', 'unassigned')
             ->latest()
             ->select('serial_id', 'id')
             ->paginate(10);
